@@ -1,4 +1,11 @@
 # depslib dependency file v1.0
-1584205420 source:c:\users\win10\sistemas\arbolbinariobusqueda\main.cpp
+1684732694 source:c:\users\win10\sistemas\arbolbinariobusqueda\main.cpp
 	<iostream>
+	"Arbin.h"
+
+1684732978 source:c:\users\win10\sistemas\arbolbinariobusqueda\arbin.cpp
+	<iostream>
+	"Arbin.h"
+
+1684851212 c:\users\win10\sistemas\arbolbinariobusqueda\arbin.h
 
