@@ -8,11 +8,14 @@ private:
     // Definición de la estructura
     struct Nodo {
         T elemento;
-        Nodo * hijo;
-        Nodo * hija;
+        Arbin<T> * hijoIzq;
+        Arbin<T> * hijoDer;
     };
     // Atributos de clase
     Nodo * raiz;
+    // Método auxiliar
+    int crear(T elemento);
+    void vaciar();
 
 public:
     Arbin(); // Constructor
@@ -20,8 +23,8 @@ public:
     void crearArbin(T elemento);
     bool esVacio();
     T raizArbin(); // pre: not esVacio
-    Arbin * subIzquierdo(); // pre: not esVacio
-    Arbin * subDerecho(); // pre: not esVacio
+    Arbin<T> * subIzquierdo(); // pre: not esVacio
+    Arbin<T> * subDerecho(); // pre: not esVacio
     bool pertenece(T elemento);
 };
 
