@@ -6,15 +6,11 @@ class Arbin
 {
 private:
     // Definición de la estructura
-    struct Nodo {
-        T elemento;
-        Arbin<T> * hijoIzq;
-        Arbin<T> * hijoDer;
-    };
     // Atributos de clase
-    Nodo * raiz;
+    T raiz;
+    Arbin<T> * hijoIzq;
+    Arbin<T> * hijoDer;
     // Método auxiliar
-    int crear(T elemento);
     void vaciar();
 
 public:

@@ -5,16 +5,16 @@ using namespace std;
 
 int main()
 {
-    Arbin<int> arbin;
+    Arbin<int> arbol;
     int num;
     cout << "Ingrese cantidad de numeros: " << endl;
     cin >> num;
     for (int i = 1; i <= num; i++)
-        arbin.crearArbin(i);
+        arbol.crearArbin(i);
 
     cout << "Ingrese numero a buscar: " << endl;
     cin >> num;
-    if (arbin.pertenece(num))
+    if (arbol.pertenece(num))
         cout << "Pertenece el numero " << num << endl;
     else
         cout << "No pertenece el numero " << num << endl;
