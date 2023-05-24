@@ -8,6 +8,16 @@ Arbin<T>::Arbin()
     raiz = NULL;
     hijoIzq = NULL;
     hijoDer = NULL;
+    padre = NULL;
+}
+
+template <typename T>
+Arbin<T>::Arbin(Arbin * & padre)
+{
+    raiz = NULL;
+    hijoIzq = NULL;
+    hijoDer = NULL;
+    padre = padre;
 }
 
 template <typename T>
@@ -17,20 +27,14 @@ Arbin<T>::~Arbin()
 }
 
 template <typename T>
-void Arbin<T>::crearArbin(T elemento)
+bool Arbin<T>::crearArbin(T elemento)
 {
-    if (raiz != NULL) {
-        if (hijoIzq == NULL)
-            hijoIzq = new Arbin;
-        if (hijoIzq->esVacio())
-            hijoIzq->crearArbin(elemento);
-        if (hijoDer == NULL)
-            hijoDer = new Arbin;
-        if (hijoDer->esVacio())
-            hijoDer->crearArbin(elemento);
-    } else {
+    if (esVacio()) {
         raiz = elemento;
+        return true;
     }
+    if(!subIzquierdo()->crearArbin(elemento))
+        subDerecho()->crearArbin(elemento);
 }
 
 template <typename T>
@@ -53,7 +57,9 @@ T Arbin<T>::raizArbin()
 template <typename T>
 Arbin<T> * Arbin<T>::subIzquierdo()
 {
-    assert(raiz == NULL);
+    assert(raiz != NULL);
+    if (hijoIzq == NULL)
+        hijoIzq = new Arbin;
     return hijoIzq;
 }
 
@@ -61,7 +67,9 @@ Arbin<T> * Arbin<T>::subIzquierdo()
 template <typename T>
 Arbin<T> * Arbin<T>::subDerecho()
 {
-    assert(raiz == NULL);
+    assert(raiz != NULL);
+    if (hijoDer == NULL)
+        hijoDer = new Arbin;
     return hijoDer;
 }
 
@@ -71,14 +79,23 @@ bool Arbin<T>::pertenece(T elemento)
     if (raiz != NULL) {
         if (raiz == elemento)
             return true;
-        if(subIzquierdo()->pertenece(elemento))
-            return true;
-        if(subDerecho()->pertenece(elemento))
-            return true;
+        if (hijoIzq != NULL)
+            if(subIzquierdo()->pertenece(elemento))
+                return true;
+        if (hijoDer != NULL)
+            if(subDerecho()->pertenece(elemento))
+                return true;
     }
     return false;
 }
 
+template <typename T>
+bool Arbin<T>::esHoja()
+{
+    return (hijoIzq == NULL && hijoDer == NULL);
+}
+
+// Método auxiliar
 template <typename T>
 void Arbin<T>::vaciar()
 {
